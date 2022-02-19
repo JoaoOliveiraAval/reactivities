@@ -3,6 +3,7 @@
 ###################
 *.com
 *.class
+appsettings.json
 *.dll
 *.exe
 *.pdb
