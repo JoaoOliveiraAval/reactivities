@@ -23,8 +23,6 @@ namespace API.Controllers
             return await _dbSet.ToListAsync();
         }
 
-
-
         [HttpGet("{id}")]
         public async Task<ActionResult<T>> Get(Guid id)
         {
