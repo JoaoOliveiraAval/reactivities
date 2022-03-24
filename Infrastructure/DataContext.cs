@@ -1,4 +1,5 @@
 using Domain;
+using Infrastructure.Mapping;
 using Infrastructure.Seed;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,6 +15,7 @@ namespace Infrastructure
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration(new ActivityMap());
             modelBuilder.SeedActivities();
         }
     }

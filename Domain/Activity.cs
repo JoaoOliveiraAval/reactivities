@@ -1,8 +1,11 @@
+using ValueObjects;
+using Yoda;
+
 namespace Domain
 {
-    public class Activity : BaseEntity<Guid>
+    public class Activity : Entity<Guid>
     {
-        public string Title { get; set; }
+        public Title Title { get; set; }
         public DateTime Dates { get; set; }
         public string Description { get; set; }
         public string Category { get; set; }
@@ -13,11 +16,12 @@ namespace Domain
         {
         }
 
-        public Activity(string title, DateTime dates, string description, string category, string city, string avenue, Guid id = default)
+        public Activity(Title title, DateTime dates, string description, string category, string city, string avenue, Guid id = default)
             : this(id)
         {
             Title = title;
             Dates = dates;
+            Description = description;
             Description = description;
             Category = category;
             City = city;

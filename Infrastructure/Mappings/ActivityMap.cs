@@ -1,6 +1,7 @@
 ﻿using Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using ValueObjects;
 
 namespace Infrastructure.Mapping
 {
@@ -12,9 +13,11 @@ namespace Infrastructure.Mapping
 
             builder.HasKey(a => a.Id);
 
-            builder.Property(a => a.Title)
-                .IsRequired()
-                .HasMaxLength(200);
+            builder
+                .Property(n => n.Title)
+                .HasConversion(n => n.Value, v => Title.Create(v).Value)
+                .HasMaxLength(Title.TitleMaxLength)
+                .IsRequired();
 
             builder.Property(a => a.Description);
 

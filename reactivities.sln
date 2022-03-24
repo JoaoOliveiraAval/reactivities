@@ -1,23 +1,27 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30114.105
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{714409C5-6F01-4580-854A-905997D4D2A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "API\API.csproj", "{714409C5-6F01-4580-854A-905997D4D2A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{1BEA33D2-648C-48A7-A25E-62AC832B54CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{1BEA33D2-648C-48A7-A25E-62AC832B54CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{DAD9A7F5-22D7-4484-A345-83A76E467795}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{DAD9A7F5-22D7-4484-A345-83A76E467795}"
+	ProjectSection(ProjectDependencies) = postProject
+		{72B43474-ACBE-4124-97B5-788ABCB71700} = {72B43474-ACBE-4124-97B5-788ABCB71700}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{56A3AD68-4399-4E42-BB61-71D0323AA412}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{56A3AD68-4399-4E42-BB61-71D0323AA412}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Yoda", "..\..\..\Aval\Yoda\Yoda.csproj", "{72B43474-ACBE-4124-97B5-788ABCB71700}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValueObjects", "ValueObjects\ValueObjects.csproj", "{E5FCE7BB-3404-4D84-A83C-401AA931CD6A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{714409C5-6F01-4580-854A-905997D4D2A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -36,5 +40,19 @@ Global
 		{56A3AD68-4399-4E42-BB61-71D0323AA412}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56A3AD68-4399-4E42-BB61-71D0323AA412}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56A3AD68-4399-4E42-BB61-71D0323AA412}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72B43474-ACBE-4124-97B5-788ABCB71700}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72B43474-ACBE-4124-97B5-788ABCB71700}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72B43474-ACBE-4124-97B5-788ABCB71700}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72B43474-ACBE-4124-97B5-788ABCB71700}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5FCE7BB-3404-4D84-A83C-401AA931CD6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5FCE7BB-3404-4D84-A83C-401AA931CD6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5FCE7BB-3404-4D84-A83C-401AA931CD6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5FCE7BB-3404-4D84-A83C-401AA931CD6A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {32DBC8A6-F387-4500-BE33-C1E98CB19DF6}
 	EndGlobalSection
 EndGlobal
