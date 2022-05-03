@@ -15,7 +15,7 @@ namespace API.DTO
 
         public ActivityDTO(Activity act)
         {
-            Title = act.Title.Value;
+            Title = act.Title;
             Dates = act.Dates;
             Description = act.Description;
             Category = act.Category;

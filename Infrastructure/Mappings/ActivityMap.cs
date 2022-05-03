@@ -10,24 +10,13 @@ namespace Infrastructure.Mapping
         public void Configure(EntityTypeBuilder<Activity> builder)
         {
             builder.ToTable("Activities");
-
             builder.HasKey(a => a.Id);
-
-            builder
-                .Property(n => n.Title)
-                .HasConversion(n => n.Value, v => Title.Create(v).Value)
-                .HasMaxLength(Title.TitleMaxLength)
-                .IsRequired();
-
+            //builder.Property(n => n.Title)
+            //    .HasConversion(n => n.Value, v => Title.Create(v).Value)
+            //    .HasMaxLength(Title.TitleMaxLength);
             builder.Property(a => a.Description);
-
-            builder.Property(a => a.Dates)
-                .IsRequired();
-
-            builder.Property(a => a.Category)
-                .IsRequired()
-                .HasMaxLength(100);
-
+            builder.Property(a => a.Dates);
+            builder.Property(a => a.Category).HasMaxLength(100);
             builder.Property(a => a.City);
             builder.Property(a => a.Avenue);
         }

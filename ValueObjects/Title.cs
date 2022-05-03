@@ -16,12 +16,13 @@ namespace ValueObjects
 
         public static string Validate(string title)
         {
-            title = title.Trim();
+            var titleValidate = title == null ? "" : title.Trim();
+            
 
-            if (string.IsNullOrWhiteSpace(title))
+            if (string.IsNullOrWhiteSpace(titleValidate))
                 return TitleCannotBeEmpty;
 
-            if (title.Length > TitleMaxLength)
+            if (titleValidate.Length > TitleMaxLength)
                 return TitleMustHaveUpToMaxLength;
 
             return string.Empty;

@@ -3,12 +3,14 @@ using Application.Activities;
 using AutoMapper;
 using Domain;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ValueObjects;
 
 namespace API.Controllers
 {
     [ApiController]
+    [AllowAnonymous]
     [Route("api/activities")]
     public class ActivitiesController : BaseApiController
     {
@@ -20,45 +22,32 @@ namespace API.Controllers
         public async Task<IActionResult> GetActivities(CancellationToken cancellationToken)
         {
             var result = await Mediator.Send(new List.Query());
-            var dtos = Mapper.Map<List<ActivityDTO>>(result);
-
-            return Ok(dtos);
+            return HandleResult<List<Activity>, List<ActivityDTO>>(result);
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(Guid id)
+        public async Task<IActionResult> GetActivity(Guid id)
         {
             var result = await Mediator.Send(new Details.Query { Id = id });
-            var dto = Mapper.Map<ActivityDTO>(result);
-
-            return Ok(dto);
+            return HandleResult<Activity, ActivityDTO>(result);
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateActivity([FromBody] ActivityDTO activity)
+        public async Task<IActionResult> CreateActivity([FromBody] Activity activity)
         {
-            return Ok(await Mediator.Send(new Create.Command { Activity = Mapper.Map<Activity>(activity) }));
+            return HandleResult(await Mediator.Send(new Create.Command { Activity = activity }));
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> EditActivity(Guid id, [FromBody] ActivityDTO activity)
+        public async Task<IActionResult> EditActivity(Guid id, [FromBody] Activity activity)
         {
-            var act = new Activity(
-                (Title)activity.Title,
-                activity.Dates,
-                activity.Description,
-                activity.Category,
-                activity.City,
-                activity.Avenue, id
-            );
-
-            return Ok(await Mediator.Send(new Edit.Command { Activity = Mapper.Map<Activity>(act) }));
+            return HandleResult(await Mediator.Send(new Edit.Command { Activity = activity }));
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteActivity(Guid id)
         {
-            return Ok(await Mediator.Send(new Delete.Command { Id = id }));
+            return HandleResult(await Mediator.Send(new Delete.Command { Id = id }));
         }
     }
 }

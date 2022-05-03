@@ -16,7 +16,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastru
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Yoda", "..\..\..\Aval\Yoda\Yoda.csproj", "{72B43474-ACBE-4124-97B5-788ABCB71700}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValueObjects", "ValueObjects\ValueObjects.csproj", "{E5FCE7BB-3404-4D84-A83C-401AA931CD6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ValueObjects", "ValueObjects\ValueObjects.csproj", "{E5FCE7BB-3404-4D84-A83C-401AA931CD6A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F335D52C-8FFF-42BC-93DC-9C8A42C6370D}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

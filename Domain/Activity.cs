@@ -5,7 +5,7 @@ namespace Domain
 {
     public class Activity : Entity<Guid>
     {
-        public Title Title { get; set; }
+        public string Title { get; set; }
         public DateTime Dates { get; set; }
         public string Description { get; set; }
         public string Category { get; set; }
@@ -16,7 +16,7 @@ namespace Domain
         {
         }
 
-        public Activity(Title title, DateTime dates, string description, string category, string city, string avenue, Guid id = default)
+        public Activity(string title, DateTime dates, string description, string category, string city, string avenue, Guid id = default)
             : this(id)
         {
             Title = title;
@@ -27,5 +27,7 @@ namespace Domain
             City = city;
             Avenue = avenue;
         }
+
+
     }
 }

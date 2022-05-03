@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\..\..\Aval\Yoda\Yoda.csproj" />
     <ProjectReference Include="..\ValueObjects\ValueObjects.csproj" />
   </ItemGroup>

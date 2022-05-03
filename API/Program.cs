@@ -1,11 +1,14 @@
+using Domain;
 using Infrastructure;
+using Infrastructure.Seed;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace API
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();
             using var scope = host.Services.CreateScope();
@@ -15,7 +18,9 @@ namespace API
             try
             {
                 var context = services.GetRequiredService<DataContext>();
-                context.Database.Migrate();
+                var userManager = services.GetRequiredService<UserManager<AppUser>>();
+                await context.Database.MigrateAsync();
+                await UserSeedingService.SeedUsers(userManager);
 
             }
             catch (Exception e)

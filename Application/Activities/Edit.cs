@@ -1,5 +1,7 @@
-﻿using AutoMapper;
+﻿using Application.Core;
+using AutoMapper;
 using Domain;
+using FluentValidation;
 using Infrastructure;
 using MediatR;
 
@@ -7,12 +9,20 @@ namespace Application.Activities
 {
     public class Edit
     {
-        public class Command : IRequest
+        public class Command : IRequest<Result<Unit>>
         {
-            public Activity? Activity { get; set; }
+            public Activity Activity { get; set; }
         }
 
-        public class Handler : IRequestHandler<Command>
+        public class CommandValidator : AbstractValidator<Command>
+        {
+            public CommandValidator()
+            {
+                RuleFor(x => x.Activity).SetValidator(new ActivityValidator());
+            }
+        }
+
+        public class Handler : IRequestHandler<Command, Result<Unit>>
         {
             private readonly DataContext _context;
             private readonly IMapper _mapper;
@@ -23,17 +33,16 @@ namespace Application.Activities
                 _mapper = mapper;
             }
 
-            public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
+            public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
             {
                 var activity = request.Activity;
+                
+                _context.Set<Activity>().Update(activity);
+                var result = await _context.SaveChangesAsync() > 0;
 
-                if (activity != null)
-                {
-                    _context.Set<Activity>().Update(activity);
-                    await _context.SaveChangesAsync();
-                }
+                if (!result) return Result<Unit>.Failure("Failed to update the activity");
 
-                return Unit.Value;
+                return Result<Unit>.Success(Unit.Value);
             }
         }
     }
