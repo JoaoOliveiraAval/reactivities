@@ -1,6 +1,6 @@
 ﻿using Application.Core;
 using Domain;
-using Infrastructure;
+using Persistence;
 using MediatR;
 
 namespace Application.Activities

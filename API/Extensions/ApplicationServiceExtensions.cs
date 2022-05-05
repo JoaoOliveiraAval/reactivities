@@ -1,10 +1,12 @@
-﻿using API.DTOs;
-using Application.Activities;
+﻿using Application.Activities;
+using Application.Core;
+using Application.Interfaces;
 using AutoMapper;
-using Infrastructure;
+using Infrastructure.Security;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using Persistence;
 
 namespace API.Extensions
 {
@@ -40,6 +42,7 @@ namespace API.Extensions
 
             services.AddMediatR(typeof(List.Handler).Assembly);
             services.AddAutoMapper(typeof(MappingProfile).Assembly);
+            services.AddScoped<IUserAccessor, UserAccessor>();
 
             return services;
         }

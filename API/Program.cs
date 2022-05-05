@@ -1,6 +1,6 @@
 using Domain;
-using Infrastructure;
-using Infrastructure.Seed;
+using Persistence;
+using Persistence.Seed;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,7 +20,8 @@ namespace API
                 var context = services.GetRequiredService<DataContext>();
                 var userManager = services.GetRequiredService<UserManager<AppUser>>();
                 await context.Database.MigrateAsync();
-                await UserSeedingService.SeedUsers(userManager);
+                //await UserSeedingService.SeedUsers(userManager);
+                await ActivityWithAttendeeSeed.SeedData(context, userManager);
 
             }
             catch (Exception e)

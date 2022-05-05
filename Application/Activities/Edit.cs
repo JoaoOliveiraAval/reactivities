@@ -2,7 +2,7 @@
 using AutoMapper;
 using Domain;
 using FluentValidation;
-using Infrastructure;
+using Persistence;
 using MediatR;
 
 namespace Application.Activities
